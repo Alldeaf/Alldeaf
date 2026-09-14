@@ -23,8 +23,8 @@
         margin: 0;
         min-height: 100vh;
         background:
-            radial-gradient(circle at top, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.2) 30%, rgba(227,234,245,0.9) 100%),
-            linear-gradient(180deg, #f7f9ff 0%, #edf3fb 100%);
+            radial-gradient(circle at top, rgba(255,255,255,0.75) 0%, rgba(233,238,247,0.65) 22%, rgba(220,228,238,0.7) 100%),
+            linear-gradient(180deg, #f3f5fa 0%, #ebf0f8 100%);
         color: #1d2433;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                      "SF Pro Text", Arial, sans-serif;
@@ -37,14 +37,14 @@
         margin: 16px auto 0;
         padding: 22px 16px 36px;
         position: relative;
-        background: rgba(255, 255, 255, 0.18);
-        border: 1px solid rgba(255, 255, 255, 0.68);
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.7);
         border-radius: 32px;
         box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.7),
-            0 18px 36px rgba(103, 115, 144, 0.12);
-        backdrop-filter: blur(18px) saturate(120%);
-        -webkit-backdrop-filter: blur(18px) saturate(120%);
+            inset 0 1px 0 rgba(255,255,255,0.8),
+            0 18px 36px rgba(103, 115, 144, 0.10);
+        backdrop-filter: blur(22px) saturate(90%) brightness(1.04);
+        -webkit-backdrop-filter: blur(22px) saturate(90%) brightness(1.04);
     }
 
     /* Alldeaf сверху по центру */
@@ -60,11 +60,11 @@
 
     .screen {
         display: none;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.38);
         border-radius: 28px;
         padding: 20px 18px 18px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
     }
 
     .screen.active {
@@ -95,16 +95,16 @@
         width: 100%;
         min-height: 158px;
         padding: 22px;
-        border: 1px solid rgba(255,255,255,0.56);
+        border: 1px solid rgba(255,255,255,0.52);
         border-radius: 26px;
-        background: rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.10);
         color: #1d2433;
         text-align: left;
         box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.75),
-            0 10px 24px rgba(131, 140, 163, 0.08);
-        backdrop-filter: blur(18px) saturate(120%);
-        -webkit-backdrop-filter: blur(18px) saturate(120%);
+            inset 0 1px 0 rgba(255,255,255,0.6),
+            0 10px 24px rgba(131, 140, 163, 0.06);
+        backdrop-filter: blur(20px) saturate(85%) brightness(1.05);
+        -webkit-backdrop-filter: blur(20px) saturate(85%) brightness(1.05);
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -144,11 +144,11 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        background: rgba(255,255,255,0.24);
-        border: 1px solid rgba(255,255,255,0.52);
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.38);
         border-radius: 12px;
         padding: 6px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.38);
     }
 
     .icon {
@@ -199,15 +199,15 @@
     .text-input {
         width: 100%;
         min-height: 220px;
-        background: rgba(255,255,255,0.14);
-        border: 1px solid rgba(255,255,255,0.5);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.38);
         border-radius: 20px;
         padding: 18px;
         font-family: inherit;
         font-size: 17px;
         line-height: 1.5;
         color: #1d2433;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.52);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.32);
     }
 
     .result-box {
@@ -249,12 +249,12 @@
         height: 58px;
         border: none;
         border-radius: 18px;
-        background: linear-gradient(135deg, rgba(122,157,255,0.92) 0%, rgba(122,126,246,0.92) 100%);
-        color: #fff;
+        background: linear-gradient(135deg, rgba(123,157,255,0.72) 0%, rgba(123,129,242,0.72) 100%);
+        color: rgba(255,255,255,0.96);
         font-size: 17px;
         box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.4),
-            0 10px 22px rgba(122, 145, 255, 0.18);
+            inset 0 1px 0 rgba(255,255,255,0.28),
+            0 10px 22px rgba(122, 145, 255, 0.10);
         transition:
             transform 0.16s cubic-bezier(.2,.8,.2,1),
             filter 0.16s ease,
