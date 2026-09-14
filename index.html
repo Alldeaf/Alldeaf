@@ -11,6 +11,12 @@
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
+        -webkit-appearance: none;
+    }
+
+    button {
+        -webkit-appearance: none;
+        appearance: none;
     }
 
     body {
@@ -108,13 +114,15 @@
         touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
         user-select: none;
+        will-change: transform, box-shadow, filter;
     }
 
     .home-button:hover {
         background: rgba(255,255,255,0.17);
     }
 
-    .home-button:active {
+    .home-button:active,
+    .home-button.is-pressed {
         transform: translateY(2px) scale(0.985);
         background: rgba(255,255,255,0.12);
         border-color: rgba(255,255,255,0.25);
@@ -244,6 +252,7 @@
             filter 0.16s ease,
             opacity 0.16s ease,
             box-shadow 0.16s ease;
+        will-change: transform, box-shadow, filter, opacity;
     }
 
     .main-button:hover,
@@ -252,7 +261,9 @@
     }
 
     .main-button:active,
-    .clear-button:active {
+    .main-button.is-pressed,
+    .clear-button:active,
+    .clear-button.is-pressed {
         transform: translateY(2px) scale(0.975);
         filter: brightness(0.97) saturate(0.96);
         opacity: 0.97;
@@ -265,8 +276,11 @@
 
     @media (hover: none) and (pointer: coarse) {
         .home-button:active,
+        .home-button.is-pressed,
         .main-button:active,
-        .clear-button:active {
+        .main-button.is-pressed,
+        .clear-button:active,
+        .clear-button.is-pressed {
             transform: translateY(2px) scale(0.97);
             box-shadow: 0 3px 8px rgba(122, 145, 255, 0.08);
         }
@@ -421,6 +435,17 @@
     const speakButton = document.getElementById("speakButton");
     const clearSpeak = document.getElementById("clearSpeak");
     const speakText = document.getElementById("speakText");
+
+    document.querySelectorAll(".home-button, .main-button, .clear-button").forEach((button) => {
+        const setPressed = (pressed) => {
+            button.classList.toggle("is-pressed", pressed);
+        };
+
+        button.addEventListener("pointerdown", () => setPressed(true));
+        button.addEventListener("pointerup", () => setPressed(false));
+        button.addEventListener("pointerleave", () => setPressed(false));
+        button.addEventListener("pointercancel", () => setPressed(false));
+    });
 
 
     /* Переключение экранов */
