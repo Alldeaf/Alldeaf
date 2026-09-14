@@ -243,29 +243,32 @@
         font-family: inherit;
         font-weight: 600;
         touch-action: manipulation;
+        border-radius: 20px;
     }
 
     .main-button {
         height: 58px;
-        border: none;
-        border-radius: 18px;
-        background: linear-gradient(135deg, rgba(123,157,255,0.72) 0%, rgba(123,129,242,0.72) 100%);
-        color: rgba(255,255,255,0.96);
+        border: 1px solid rgba(255,255,255,0.45);
+        background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%);
+        color: #1d2433;
         font-size: 17px;
         box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.28),
-            0 10px 22px rgba(122, 145, 255, 0.10);
+            inset 0 1px 0 rgba(255,255,255,0.5),
+            0 10px 20px rgba(130, 138, 155, 0.08);
+        backdrop-filter: blur(18px) saturate(90%);
+        -webkit-backdrop-filter: blur(18px) saturate(90%);
         transition:
             transform 0.16s cubic-bezier(.2,.8,.2,1),
             filter 0.16s ease,
             opacity 0.16s ease,
-            box-shadow 0.16s ease;
+            box-shadow 0.16s ease,
+            background 0.16s ease;
         will-change: transform, box-shadow, filter, opacity;
     }
 
     .main-button:hover,
     .clear-button:hover {
-        filter: brightness(1.006);
+        filter: brightness(1.02);
     }
 
     .main-button:active,
@@ -273,13 +276,15 @@
     .clear-button:active,
     .clear-button.is-pressed {
         transform: translateY(2px) scale(0.975);
-        filter: brightness(0.97) saturate(0.96);
+        filter: brightness(0.98) saturate(0.96);
         opacity: 0.97;
-        box-shadow: 0 5px 10px rgba(122, 145, 255, 0.11);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 4px 10px rgba(130, 138, 155, 0.06);
     }
 
     .main-button.active {
-        background: linear-gradient(135deg, #ff9b9b 0%, #ff6d6d 100%);
+        background: linear-gradient(135deg, rgba(255, 168, 168, 0.18) 0%, rgba(255, 123, 123, 0.18) 100%);
+        border-color: rgba(255,255,255,0.46);
+        color: #1d2433;
     }
 
     @media (hover: none) and (pointer: coarse) {
@@ -296,11 +301,14 @@
 
     .clear-button {
         height: 52px;
-        border: 1px solid rgba(255,255,255,0.7);
+        border: 1px solid rgba(255,255,255,0.46);
         border-radius: 18px;
-        background: rgba(255,255,255,0.22);
+        background: rgba(255,255,255,0.10);
         color: #1d2433;
         font-size: 16px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.42);
+        backdrop-filter: blur(16px) saturate(90%);
+        -webkit-backdrop-filter: blur(16px) saturate(90%);
     }
 </style>
 </head>
