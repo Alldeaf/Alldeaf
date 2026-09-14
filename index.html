@@ -1,0 +1,589 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alldeaf</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        margin: 0;
+        background: #f5f5f7;
+        color: #111;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+                     "SF Pro Text", Arial, sans-serif;
+    }
+
+    .app {
+        min-height: 100vh;
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 20px 18px 30px;
+    }
+
+    /* Alldeaf сверху по центру */
+    .top-logo {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -0.7px;
+        margin-bottom: 34px;
+    }
+
+    .screen {
+        display: none;
+    }
+
+    .screen.active {
+        display: block;
+    }
+
+    /* Главная */
+    .home {
+        padding-top: 8px;
+    }
+
+    .slogan {
+        text-align: center;
+        font-size: 17px;
+        color: #777;
+        margin-bottom: 28px;
+    }
+
+    .home-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    /* Карточки */
+    .home-button {
+        width: 100%;
+        min-height: 158px;
+        padding: 22px;
+        border: none;
+        border-radius: 22px;
+        background: #fff;
+        color: #111;
+        text-align: left;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .home-button:active {
+        transform: scale(0.985);
+    }
+
+    .icon-box {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .icon {
+        width: 29px;
+        height: 29px;
+        stroke: #111;
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .home-title {
+        font-size: 20px;
+        font-weight: 650;
+        margin-bottom: 7px;
+        line-height: 1.2;
+    }
+
+    .home-description {
+        font-size: 14px;
+        line-height: 1.45;
+        color: #777;
+        max-width: 360px;
+    }
+
+    /* Внутренние страницы */
+    .back {
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 22px;
+        font-size: 16px;
+        color: #111;
+        cursor: pointer;
+    }
+
+    .page-title {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.7px;
+        margin: 0 0 18px;
+    }
+
+    .result-box,
+    .text-input {
+        width: 100%;
+        min-height: 220px;
+        background: #fff;
+        border: 1px solid #e0e0e5;
+        border-radius: 20px;
+        padding: 18px;
+        font-family: inherit;
+        font-size: 17px;
+        line-height: 1.5;
+        color: #111;
+    }
+
+    .result-box {
+        overflow-y: auto;
+    }
+
+    .placeholder {
+        color: #999;
+    }
+
+    .text-input {
+        resize: none;
+        outline: none;
+    }
+
+    .text-input:focus {
+        border-color: #111;
+    }
+
+    /* Кнопки */
+    .button-column {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .main-button,
+    .clear-button {
+        width: 100%;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: 600;
+    }
+
+    .main-button {
+        height: 58px;
+        border: none;
+        border-radius: 18px;
+        background: #111;
+        color: #fff;
+        font-size: 17px;
+    }
+
+    .main-button:active,
+    .clear-button:active {
+        transform: scale(0.98);
+    }
+
+    .main-button.active {
+        background: #ff3b30;
+    }
+
+    .clear-button {
+        height: 52px;
+        border: 1px solid #d9d9de;
+        border-radius: 18px;
+        background: #fff;
+        color: #111;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ALldeaf -->
+    <div class="top-logo">Alldeaf</div>
+
+    <!-- Главный экран -->
+    <section class="screen active" id="homeScreen">
+
+        <div class="home">
+
+            <div class="slogan">Связь без звука</div>
+
+            <div class="home-buttons">
+
+                <!-- Слушать -->
+                <button class="home-button" id="listenOpen">
+
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v1a7 7 0 0 1-14 0v-1"/>
+                            <path d="M12 18v3"/>
+                            <path d="M8 21h8"/>
+                        </svg>
+                    </div>
+
+                    <div class="home-title">Слушать</div>
+
+                    <div class="home-description">
+                        Превращает речь собеседника в текст на экране
+                    </div>
+
+                </button>
+
+
+                <!-- Говорить -->
+                <button class="home-button" id="speakOpen">
+
+                    <div class="icon-box">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M4 5h16v10H8l-4 4V5Z"/>
+                            <path d="M8 9h8"/>
+                            <path d="M8 12h5"/>
+                        </svg>
+                    </div>
+
+                    <div class="home-title">Говорить</div>
+
+                    <div class="home-description">
+                        Озвучивает ваш текст вслух для собеседника
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Экран Слушать -->
+    <section class="screen" id="listenScreen">
+
+        <button class="back" id="backFromListen">‹ Назад</button>
+
+        <h1 class="page-title">Слушать</h1>
+
+        <div class="result-box" id="speechText">
+            <span class="placeholder">Здесь появится текст...</span>
+        </div>
+
+        <div class="button-column">
+
+            <button class="main-button" id="listenButton">
+                Начать слушать
+            </button>
+
+            <button class="clear-button" id="clearListen">
+                Очистить
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Экран Говорить -->
+    <section class="screen" id="speakScreen">
+
+        <button class="back" id="backFromSpeak">‹ Назад</button>
+
+        <h1 class="page-title">Говорить</h1>
+
+        <textarea
+            class="text-input"
+            id="speakText"
+            placeholder="Напишите текст..."
+        ></textarea>
+
+        <div class="button-column">
+
+            <button class="main-button" id="speakButton">
+                Озвучить
+            </button>
+
+            <button class="clear-button" id="clearSpeak">
+                Очистить
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+    const homeScreen = document.getElementById("homeScreen");
+    const listenScreen = document.getElementById("listenScreen");
+    const speakScreen = document.getElementById("speakScreen");
+
+    const listenOpen = document.getElementById("listenOpen");
+    const speakOpen = document.getElementById("speakOpen");
+
+    const backFromListen = document.getElementById("backFromListen");
+    const backFromSpeak = document.getElementById("backFromSpeak");
+
+    const listenButton = document.getElementById("listenButton");
+    const clearListen = document.getElementById("clearListen");
+    const speechText = document.getElementById("speechText");
+
+    const speakButton = document.getElementById("speakButton");
+    const clearSpeak = document.getElementById("clearSpeak");
+    const speakText = document.getElementById("speakText");
+
+
+    /* Переключение экранов */
+    function showScreen(screen) {
+
+        homeScreen.classList.remove("active");
+        listenScreen.classList.remove("active");
+        speakScreen.classList.remove("active");
+
+        screen.classList.add("active");
+    }
+
+
+    /* Открыть Слушать */
+    listenOpen.addEventListener("click", () => {
+        showScreen(listenScreen);
+    });
+
+
+    /* Открыть Говорить */
+    speakOpen.addEventListener("click", () => {
+        showScreen(speakScreen);
+    });
+
+
+    /* Назад из Слушать */
+    backFromListen.addEventListener("click", () => {
+
+        stopListening();
+
+        showScreen(homeScreen);
+    });
+
+
+    /* Назад из Говорить */
+    backFromSpeak.addEventListener("click", () => {
+
+        speechSynthesis.cancel();
+
+        speakButton.classList.remove("active");
+        speakButton.textContent = "Озвучить";
+
+        showScreen(homeScreen);
+    });
+
+
+    /* =========================
+       РАСПОЗНАВАНИЕ РЕЧИ
+       ========================= */
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+    let recognition = null;
+    let listening = false;
+
+
+    if (SpeechRecognition) {
+
+        recognition = new SpeechRecognition();
+
+        recognition.lang = "ru-RU";
+        recognition.continuous = true;
+        recognition.interimResults = true;
+
+
+        recognition.onresult = function(event) {
+
+            let finalText = "";
+
+            for (
+                let i = event.resultIndex;
+                i < event.results.length;
+                i++
+            ) {
+
+                finalText += event.results[i][0].transcript;
+            }
+
+            if (finalText.trim()) {
+
+                speechText.textContent = finalText;
+            }
+        };
+
+
+        recognition.onend = function() {
+
+            if (listening) {
+
+                try {
+                    recognition.start();
+                } catch (e) {}
+
+            }
+        };
+
+
+        recognition.onerror = function() {
+
+            listening = false;
+
+            listenButton.classList.remove("active");
+            listenButton.textContent = "Начать слушать";
+        };
+
+    } else {
+
+        listenButton.addEventListener("click", () => {
+
+            speechText.textContent =
+                "Распознавание речи не поддерживается этим браузером.";
+
+        });
+    }
+
+
+    /* Начать слушать */
+    function startListening() {
+
+        if (!recognition) return;
+
+        listening = true;
+
+        speechText.innerHTML = "";
+
+        listenButton.classList.add("active");
+        listenButton.textContent = "Остановить";
+
+
+        try {
+            recognition.start();
+        } catch (e) {}
+    }
+
+
+    /* Остановить слушание */
+    function stopListening() {
+
+        listening = false;
+
+        if (recognition) {
+
+            try {
+                recognition.stop();
+            } catch (e) {}
+        }
+
+        listenButton.classList.remove("active");
+        listenButton.textContent = "Начать слушать";
+    }
+
+
+    listenButton.addEventListener("click", () => {
+
+        if (listening) {
+
+            stopListening();
+
+        } else {
+
+            startListening();
+
+        }
+
+    });
+
+
+    /* Очистить текст */
+    clearListen.addEventListener("click", () => {
+
+        speechText.innerHTML =
+            '<span class="placeholder">Здесь появится текст...</span>';
+
+    });
+
+
+    /* =========================
+       ОЗВУЧИВАНИЕ ТЕКСТА
+       ========================= */
+
+    speakButton.addEventListener("click", () => {
+
+        const text = speakText.value.trim();
+
+        if (!text) return;
+
+        speechSynthesis.cancel();
+
+        const voice =
+            new SpeechSynthesisUtterance(text);
+
+        voice.lang = "ru-RU";
+        voice.rate = 1;
+        voice.pitch = 1;
+
+
+        speakButton.classList.add("active");
+        speakButton.textContent = "Говорю...";
+
+
+        voice.onend = function() {
+
+            speakButton.classList.remove("active");
+            speakButton.textContent = "Озвучить";
+        };
+
+
+        voice.onerror = function() {
+
+            speakButton.classList.remove("active");
+            speakButton.textContent = "Озвучить";
+        };
+
+
+        speechSynthesis.speak(voice);
+
+    });
+
+
+    /* Очистить текст */
+    clearSpeak.addEventListener("click", () => {
+
+        speechSynthesis.cancel();
+
+        speakText.value = "";
+
+        speakButton.classList.remove("active");
+        speakButton.textContent = "Озвучить";
+
+    });
+
+</script>
+
+</body>
+</html>
+```
