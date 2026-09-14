@@ -567,7 +567,10 @@
     /* Начать слушать */
     function startListening() {
 
-        if (!recognition) return;
+        if (!recognition) {
+            speechText.textContent = "Распознавание речи не поддерживается в этом браузере. Откройте сайт в Chrome или Edge на iPhone.";
+            return;
+        }
 
         listening = true;
 
@@ -600,18 +603,31 @@
     }
 
 
-    listenButton.addEventListener("click", () => {
+    let listenPressLocked = false;
+
+    function toggleListenButton() {
+        if (listenPressLocked) return;
+
+        listenPressLocked = true;
+        setTimeout(() => {
+            listenPressLocked = false;
+        }, 220);
 
         if (listening) {
-
             stopListening();
-
         } else {
-
             startListening();
-
         }
+    }
 
+    listenButton.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        toggleListenButton();
+    });
+
+    listenButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        toggleListenButton();
     });
 
 
