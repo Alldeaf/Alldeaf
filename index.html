@@ -22,9 +22,7 @@
     body {
         margin: 0;
         min-height: 100vh;
-        background:
-            radial-gradient(circle at top, rgba(255,255,255,0.34) 0%, rgba(198,203,212,0.42) 22%, rgba(140,147,160,0.52) 100%),
-            linear-gradient(180deg, #dfe4ea 0%, #c9ced7 100%);
+        background: linear-gradient(180deg, #dfe4ea 0%, #ccd3dc 100%);
         color: #1d2433;
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
                      "SF Pro Text", Arial, sans-serif;
@@ -37,14 +35,12 @@
         margin: 16px auto 0;
         padding: 22px 16px 36px;
         position: relative;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.28);
         border-radius: 32px;
-        box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.6),
-            0 18px 36px rgba(103, 115, 144, 0.08);
-        backdrop-filter: blur(18px) saturate(85%) brightness(1.02);
-        -webkit-backdrop-filter: blur(18px) saturate(85%) brightness(1.02);
+        box-shadow: 0 16px 30px rgba(103, 115, 144, 0.06);
+        backdrop-filter: blur(14px) saturate(80%);
+        -webkit-backdrop-filter: blur(14px) saturate(80%);
     }
 
     /* Alldeaf сверху по центру */
@@ -60,11 +56,11 @@
 
     .screen {
         display: none;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 28px;
-        padding: 20px 18px 18px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
     }
 
     .screen.active {
@@ -95,16 +91,14 @@
         width: 100%;
         min-height: 158px;
         padding: 22px;
-        border: 1px solid rgba(255,255,255,0.52);
+        border: 1px solid rgba(255,255,255,0.32);
         border-radius: 26px;
-        background: rgba(255,255,255,0.10);
+        background: rgba(255,255,255,0.08);
         color: #1d2433;
         text-align: left;
-        box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.6),
-            0 10px 24px rgba(131, 140, 163, 0.06);
-        backdrop-filter: blur(20px) saturate(85%) brightness(1.05);
-        -webkit-backdrop-filter: blur(20px) saturate(85%) brightness(1.05);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+        backdrop-filter: blur(14px) saturate(80%);
+        -webkit-backdrop-filter: blur(14px) saturate(80%);
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -199,15 +193,15 @@
     .text-input {
         width: 100%;
         min-height: 220px;
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.38);
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 20px;
         padding: 18px;
         font-family: inherit;
         font-size: 17px;
         line-height: 1.5;
         color: #1d2433;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.32);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
     }
 
     .result-box {
@@ -248,15 +242,13 @@
 
     .main-button {
         height: 58px;
-        border: 1px solid rgba(255,255,255,0.45);
-        background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.06) 100%);
+        border: 1px solid rgba(255,255,255,0.22);
+        background: rgba(255,255,255,0.06);
         color: #1d2433;
         font-size: 17px;
-        box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.5),
-            0 10px 20px rgba(130, 138, 155, 0.08);
-        backdrop-filter: blur(18px) saturate(90%);
-        -webkit-backdrop-filter: blur(18px) saturate(90%);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        backdrop-filter: blur(12px) saturate(80%);
+        -webkit-backdrop-filter: blur(12px) saturate(80%);
         transition:
             transform 0.16s cubic-bezier(.2,.8,.2,1),
             filter 0.16s ease,
