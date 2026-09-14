@@ -100,12 +100,14 @@
         align-items: flex-start;
         justify-content: flex-start;
         transition:
-            transform 0.12s ease,
-            border-color 0.12s ease,
-            background 0.12s ease,
-            box-shadow 0.12s ease,
-            filter 0.12s ease;
+            transform 0.16s cubic-bezier(.2,.8,.2,1),
+            border-color 0.16s ease,
+            background 0.16s ease,
+            box-shadow 0.16s ease,
+            filter 0.16s ease;
         touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
     }
 
     .home-button:hover {
@@ -113,11 +115,13 @@
     }
 
     .home-button:active {
-        transform: translateY(1.5px) scale(0.992);
+        transform: translateY(2px) scale(0.985);
         background: rgba(255,255,255,0.12);
-        border-color: rgba(255,255,255,0.28);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.34);
-        filter: brightness(0.99);
+        border-color: rgba(255,255,255,0.25);
+        box-shadow:
+            inset 0 2px 8px rgba(119, 131, 156, 0.12),
+            0 5px 12px rgba(132, 141, 164, 0.08);
+        filter: brightness(0.985) saturate(0.96);
     }
 
     .icon-box {
@@ -236,10 +240,10 @@
         font-size: 17px;
         box-shadow: 0 10px 22px rgba(122, 145, 255, 0.18);
         transition:
-            transform 0.12s ease,
-            filter 0.12s ease,
-            opacity 0.12s ease,
-            box-shadow 0.12s ease;
+            transform 0.16s cubic-bezier(.2,.8,.2,1),
+            filter 0.16s ease,
+            opacity 0.16s ease,
+            box-shadow 0.16s ease;
     }
 
     .main-button:hover,
@@ -249,14 +253,23 @@
 
     .main-button:active,
     .clear-button:active {
-        transform: translateY(1px) scale(0.985);
-        filter: brightness(0.98);
+        transform: translateY(2px) scale(0.975);
+        filter: brightness(0.97) saturate(0.96);
         opacity: 0.97;
-        box-shadow: 0 6px 12px rgba(122, 145, 255, 0.1);
+        box-shadow: 0 5px 10px rgba(122, 145, 255, 0.11);
     }
 
     .main-button.active {
         background: linear-gradient(135deg, #ff9b9b 0%, #ff6d6d 100%);
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+        .home-button:active,
+        .main-button:active,
+        .clear-button:active {
+            transform: translateY(2px) scale(0.97);
+            box-shadow: 0 3px 8px rgba(122, 145, 255, 0.08);
+        }
     }
 
     .clear-button {
